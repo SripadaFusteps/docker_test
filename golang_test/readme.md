@@ -51,14 +51,17 @@ func hello(w http.ResponseWriter, _ *http.Request) {
 
 <p>To build using docker, we need to create a Dockerfile inside our project. This file consists a set of 
 instructions to build a docker image. In this case, our Dockerfile will be like so. </P>
-``` FROM golang
+
+``` 
+FROM golang
 WORKDIR /go/src/github.com/SripadaFusteps/docker_test
 ADD . ./
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix .
 EXPOSE 8888
-ENTRYPOINT ./docker_test ```
+ENTRYPOINT ./docker_test 
+```
 
-<p>So what happened here? First, we set our base image. We can use any docker image as our base, but it’s good to 
+<p> So what happened here? First, we set our base image. We can use any docker image as our base, but it’s good to 
 use an image that has everything you need to build your application. For example, if you are to build a NodeJS application, 
 you might choose nodejs image for your base. Next, we set our WORKDIR which will be used as base path for every command that 
 use relative path. Then we ADD all our project files to the docker working directory. With all files already included, now we
